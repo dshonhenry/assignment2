@@ -21,7 +21,7 @@
         else {setcookie('scriptEnabled', '', time() - 3600);}  
 
         if(areCredentialsValid($user_info)) {
-            $file = file("procoms_user.csv");
+            $file = file("./CSV/procoms_user.csv");
             $users = [];
             foreach ($file as $line) {
                 $newUser['em'] = str_getcsv($line)[0];            
@@ -41,7 +41,7 @@
     }
 
     function areCredentialsValid(array $user_info) {   
-        $file = file("procoms_user.csv");     
+        $file = file("./CSV/procoms_user.csv");     
         $recordMatches = 0;
 
        

@@ -2,7 +2,7 @@
 
 <?php
     function getStudents($year){
-        $file = file("students.csv");
+        $file = file("./CSV/students.csv");
         $students = [];
 
         foreach ($file as $line) {
@@ -47,7 +47,7 @@
     } 
 
     function getStudentById($id) {
-        $file = file("students.csv");
+        $file = file("./CSV/students.csv");
         $student;
 
         foreach ($file as $line) {

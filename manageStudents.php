@@ -36,7 +36,7 @@
 
         $newStudent = array($student['studentId'] ,$student['fname'],$student['lname'],$student['email'],$_SESSION['year'], $student['address']);
         
-        $file = fopen("students.csv", "a");
+        $file = fopen("./CSV/students.csv", "a");
         fputcsv($file, $newStudent);
         fclose($file);
         header('Location: students.php?year='.$_SESSION['year']);
@@ -45,7 +45,7 @@
     }
 
     function updateStudent($formInfo) {
-        $file = file("students.csv");
+        $file = file("./CSV/students.csv");
         $students = [];
 
         foreach ($file as $line) {
@@ -65,7 +65,7 @@
         }
         fclose($file);
 
-        $file = fopen("students.csv", "w");
+        $file = fopen("./CSV/students.csv", "w");
         foreach($students as $student)
             fputcsv($file, $student);
         fclose($file);
@@ -73,7 +73,7 @@
     }
 
     function removeStudent($studentId) {
-        $file = file("students.csv");
+        $file = file("./CSV/students.csv");
         $students = [];
 
         foreach ($file as $line) {
@@ -86,7 +86,7 @@
         }
         fclose($file);
 
-        $file = fopen("students.csv", "w");
+        $file = fopen("./CSV/students.csv", "w");
         foreach($students as $student)
             fputcsv($file, $student);
 

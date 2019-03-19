@@ -35,8 +35,8 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="base.css">
-    <link rel="stylesheet" type="text/css" href="new.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/base.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/new.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -145,7 +145,7 @@
     </div>
 </body>
 
-<script type="text/javascript" src="base.js"></script>
-<script type="text/javascript" src="new.js"></script>
+<script type="text/javascript" src="./JS/base.js"></script>
+<script type="text/javascript" src="./JS/new.js"></script>
 
 </html>

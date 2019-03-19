@@ -30,8 +30,8 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="base.css">
-    <link rel="stylesheet" type="text/css" href="students.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/base.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/students.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <script type="text/javascript" src="base.js"></script>
     <title>Students</title>
