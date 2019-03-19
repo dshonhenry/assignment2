@@ -1,0 +1,64 @@
+a:visited {
+    color: var(--highlight); 
+}
+
+#content ul {
+    clear: both;
+    overflow: auto;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+
+#content li {
+    float: left;
+    list-style-type: none;
+    padding: 0px 10px;
+    font-size: 4.5vw;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+#content > a {
+    float: right;
+    font-size: 4.5vw;
+    color: var(--highlight);    
+}
+
+#chosenYear {    
+    background: var(--lightText);    
+    color: var(--highlight);
+}
+
+#studentTable {
+    width: 100%;
+    background: var(--lightText)
+}
+
+#studentTable td {
+    font-size: 3vw;
+    padding: 1vh 0.5vw;
+}
+
+table a {
+    color: var(--highlight);
+}
+
+@media screen and (min-width: 600px){
+    #content li{
+        font-size: 20px;
+    }
+
+    #content > a {
+        font-size: 20px;
+    }
+
+    #studentTable td {
+        font-size: 15px;
+        padding: 1vh 0.5vw;
+    }
+
+    #content h1 {
+        text-align: center;
+    }
+}

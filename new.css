@@ -1,0 +1,159 @@
+input {
+    width: 100%;
+}
+
+form {
+    background: var(--lightText);
+    border-radius: 5px;
+    padding: 1vh 1vw;
+}
+
+label {
+    font-size: 4vw;
+    text-align: right;
+    float: right;
+}
+
+input {
+    border: none;
+    border-bottom: 1.5px var(--highlight) solid;
+    background: var(--lightText);
+}
+
+textarea {
+    font-family: 'Helvetica';
+    border: none;
+    border-bottom: 1.5px var(--highlight) solid;
+    background: var(--lightText);
+    width:100%;
+    height: 20%;
+}
+
+[class*="row"] {    
+    clear: both;
+    overflow: hidden;
+}
+
+[class*="col-"] {
+    float: left;
+}
+
+.big-row .col-1{
+    width: 98%;
+}
+
+.big-row .col-2{
+    width: 98%;
+}
+
+.row {
+    width: 100%;
+    padding: 5px;
+    margin: 5vh 0%;
+}
+
+.row .col-1 {
+    width: 25%;
+    margin: 0% 2% 0% 7%;
+}
+
+.row .col-2 {
+    width: 50%;
+}
+
+.btn-row {
+    width: 80%;
+    margin-left: 12vw;
+}
+
+.btn-row [class*="col-"] {
+    margin: 0%;
+    width: 40%;
+    padding: 5px;
+}
+
+.btn-row button {
+    width: 100%;
+}
+
+.error {
+    color: var(--lightText);
+    border-radius: 5px; 
+    background: tomato;
+    text-align: center;
+    margin:2vh 0px;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+@media screen and (min-width: 800px) {
+    #content {
+        height: 83vh;
+    }
+
+    .big-row .col-1{
+        width: 700px;
+        height: 100%;
+    }
+
+    .big-row > .col-2{
+        width: 20%;
+        height: 100%;
+    }
+
+    .row {
+        margin-top: 70px;
+    }
+
+    .error {               
+        margin-top: 70px;
+        margin-left: 30px;
+    }
+
+    .error:first-of-type {
+        margin-top: 90px;
+    }
+
+    .row .col-1 {
+        width: 15%;
+        margin-left: 90px;
+    }
+
+    .btn-row {
+        margin-top: 3vh;
+    }
+
+    .btn-row [class*="col"]{
+        width: 20%;
+    }
+
+    .hidden {
+        visibility: hidden;
+        display: block;
+        /* height: initial;
+        margin: initial;
+        padding: initial;
+        position: relative; */
+    }
+
+    form {
+        margin-left: 5%;
+    }
+
+    label {
+        font-size: 17px;
+        
+        margin-left: 5%;
+    }
+
+    input {
+        font-size: 17px;
+    }
+}

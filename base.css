@@ -1,0 +1,154 @@
+:root {
+    --bkg: #eeeeee;
+    --primary: #2f3640;
+    --secondary: #1abc9c;
+    --highlight: #2ecc71;
+    --lightText: #f9f9f9;
+
+}
+
+body {
+    font-family: 'Helvetica';
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    padding: 0%;
+
+    background: var(--bkg);
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: lighter;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1 > a, h1 > a:visited {
+    color: var(--lightText)
+}
+
+.nav {
+    background: var(--primary);
+    margin: 0%;
+    width: 100%;
+    position: fixed;
+    height: 11vh;
+    top: 0px;
+    clear: both;
+    overflow: auto;
+    box-shadow: 0px 5px 30px -10px rgba(94, 94, 94, 0.42);
+}
+
+.heading {
+    float: left;
+    color: var(--lightText);
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.heading h1 {
+    margin: 0px 0px 1px 0px;
+    font-size: 2vh;
+}
+
+.subtle {
+    font-size: 3vw;
+    margin-right: 2vw;
+    font-weight: lighter;
+}
+
+.hamburger {
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+}
+
+.menu {
+    position: fixed;
+    right: 10px;
+    top: 0px;
+    margin: 17px 0px 0px 0px;
+}
+
+#dropdownContent {
+    opacity: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    right: 0;
+    max-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 5px 50px 12px 10px;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+#dropdownContent a {
+    margin: 10px 0px;
+    color: var(--primary);
+}
+
+[class*="bar"] {
+    width: 100%;
+    height: 14%;
+    background-color: var(--lightText);
+    margin-bottom: 15%;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-8px, 7px);
+    transform: rotate(-45deg) translate(-8px, 7px);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-7px, -8px);
+    transform: rotate(45deg) translate(-7px, -8px);
+}
+
+#content {
+    margin-top: 11vh;
+    padding: 10px;
+}
+
+#content h1 {
+    margin-top: 0%;
+    color: var(--primary);
+}
+
+button {
+    background-color: var(--highlight);
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .heading h1 {
+        font-size: 2vw;
+    }
+
+    .subtle {
+        font-size: 90%;
+    }
+
+    .menu {
+        margin-top: 25px;
+        margin-right: 10px;
+    }
+}

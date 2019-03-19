@@ -1,0 +1,41 @@
+.cardStack{
+    margin-top: 11vh;
+    padding: 10px;
+}
+
+
+.card{
+    background: var(--lightText);
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 4px 4px 30px -10px rgba(94,94,94,1);
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.card a{
+    text-decoration: none;
+    color: var(--highlight);
+    text-align: center;
+}
+
+@media screen and (min-width: 600px){
+    .cardStack{
+        clear: both;
+        overflow: auto; 
+        height: 69vh;
+    }
+
+    .card{
+        float: left;
+        width: 30%;
+        height: 30%;
+        margin: 1%;
+    }
+
+    .card a{
+        font-size: 2vw;
+    }
+}
