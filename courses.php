@@ -1,8 +1,8 @@
 <!--COURSES.PHP-->
 
 <?php
-    require("login.php");    
-    require("viewStudents.php");
+    require_once("login.php");    
+    require_once("manageCourses.php");
 
     if (!isUserLoggedIn()) {
         header('Location: index.php');
@@ -22,7 +22,7 @@
             header('Location: students.php');
             exit();
         }
-    }    
+    }  
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +31,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./CSS/base.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/students.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/tables.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <script type="text/javascript" src="./JS/base.js"></script>
-    <title>Students</title>
+    <title>Courses</title>
 </head>
 
 <body>
@@ -53,26 +53,15 @@
             <div id="dropdownContent">
                 <a href="#">Account</a>
                 <a href="#">Settings</a>
-                <a href="index.php">Logout</a>
+                <a href="logout.php">Logout</a>
             </div>
         </div>
     </div>
 
     <div id="content">
-        <h1>Students</h1>
-        <ul>
-            <?php foreach($availableYears as $avYear) {?>
-                <?php if($year == $avYear) : ?>
-                    <li id="chosenYear">
-                <?php else : ?>
-                    <li>
-                <?php endif ;
-                echo('<a href="students.php?year='.$avYear.'">'.$avYear.'</a></li>');
-                
-            }?>
-        </ul>
-        <a href="newStudent.php">New Student</a>
-        <?php echo(viewStudents(getStudents($year))); ?>
+        <h1>Courses</h1>
+        <a href="newCourse.php">New Course</a>
+        <?php echo(viewCourses()); ?>
     </div>
 </body>
 

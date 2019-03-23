@@ -1,7 +1,7 @@
 <!--VALIDATE.PHP-->
 
 <?php
-    require("login.php");
+    require_once("login.php");
     global $errorString;
     $GLOBALS['errorString'] = "";
     if(isset($_POST['submitU'])) {
@@ -21,29 +21,14 @@
         else {setcookie('scriptEnabled', '', time() - 3600);}  
 
         if(areCredentialsValid($user_info)) {
-            $file = file("./CSV/procoms_user.csv");
-            $users = [];
-            foreach ($file as $line) {
-                $newUser['em'] = str_getcsv($line)[0];            
-                $newUser['pass'] = str_getcsv($line)[1];                     
-                $newUser['fname'] = str_getcsv($line)[2];         
-                $newUser['lname'] = str_getcsv($line)[3];                     
-                $newUser['role'] = str_getcsv($line)[4];
-                $users[] = $newUser;
-            }
-            foreach ($users as $user){
-                if ($user['em']==$user_info['email'] && $user['pass'] == $user_info['password']){
-                    $userFound = $user;                
-                }
-            }
-            loginUser($userFound);
+            
+            loginUser($_POST);
         }    
     }
 
     function areCredentialsValid(array $user_info) {   
         $file = file("./CSV/procoms_user.csv");     
         $recordMatches = 0;
-
        
         foreach ($file as $line) {
             if ($user_info['email']==str_getcsv($line)[0] && $user_info['password'] == str_getcsv($line)[1]){
@@ -77,10 +62,7 @@
                 break;
             }
         }
-        if(!$numFound)
-            return false;
-
-        return true;
+        return $numFound;
     }
 
     function isIdValid($id) {

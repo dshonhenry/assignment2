@@ -1,8 +1,8 @@
 <!--NEWSTUDENT.PHP-->
 
 <?php
-    require("login.php");
-    require("viewStudents.php");
+    require_once("login.php");
+    require_once("viewStudents.php");
 
     if (!isUserLoggedIn()) {
         header('Location: index.php');
@@ -36,7 +36,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./CSS/base.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/new.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/form.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 

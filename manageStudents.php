@@ -1,8 +1,9 @@
 <!--MANAGESTUDENTS.PHP-->
 
 <?php
-    include("validate.php");
-    include("viewStudents.php");
+    require_once("validate.php");
+    require_once("viewStudents.php");
+    require_once("CSVManagement.php");
 
     session_start();
     if(isset($_POST['cancel'])) {
@@ -35,61 +36,24 @@
     function newStudent($student) {
 
         $newStudent = array($student['studentId'] ,$student['fname'],$student['lname'],$student['email'],$_SESSION['year'], $student['address']);
-        
-        $file = fopen("./CSV/students.csv", "a");
-        fputcsv($file, $newStudent);
-        fclose($file);
+        CSV_Manager::addRecord("./CSV/students.csv", $newStudent);
         header('Location: students.php?year='.$_SESSION['year']);
-        exit();
         
     }
 
     function updateStudent($formInfo) {
-        $file = file("./CSV/students.csv");
-        $students = [];
-
-        foreach ($file as $line) {
-            if($formInfo['studentId'] == str_getcsv($line)[0]) {
-                $newStudent[0] = $formInfo['studentId'];  
-                $newStudent[1] = $formInfo['fname'];                    
-                $newStudent[2] = $formInfo['lname'];         
-                $newStudent[3] = $formInfo['email'];                               
-                $newStudent[4] =  $_SESSION['year'];                         
-                $newStudent[5] = $formInfo['address'];           
-            }
-            else {
-                $student = readStudent($line);
-                $newStudent = array($student['studentId'] ,$student['fname'],$student['lname'],$student['email'],$student['year'], $student['address']);
-            }
-            $students[] = $newStudent;
-        }
-        fclose($file);
-
-        $file = fopen("./CSV/students.csv", "w");
-        foreach($students as $student)
-            fputcsv($file, $student);
-        fclose($file);
+        $newStudent[0] = $formInfo['studentId'];  
+        $newStudent[1] = $formInfo['fname'];                    
+        $newStudent[2] = $formInfo['lname'];         
+        $newStudent[3] = $formInfo['email'];                               
+        $newStudent[4] =  $_SESSION['year'];                         
+        $newStudent[5] = $formInfo['address'];
+        CSV_Manager::updateRecord("./CSV/students.csv", $newStudent, 0); 
         header('Location: students.php?year='.$_SESSION['year']);
     }
 
     function removeStudent($studentId) {
-        $file = file("./CSV/students.csv");
-        $students = [];
-
-        foreach ($file as $line) {
-            if($studentId == str_getcsv($line)[0]) 
-                continue;
-            for($i =0; $i<6; $i++) {
-                $newStudent[$i] = str_getcsv($line)[$i];     
-            }   
-            $students[] = $newStudent;
-        }
-        fclose($file);
-
-        $file = fopen("./CSV/students.csv", "w");
-        foreach($students as $student)
-            fputcsv($file, $student);
-
+        CSV_Manager::removeRecordById("./CSV/students.csv", $studentId,0);
         header('Location: students.php?year='.$_SESSION['year']);
         exit();
     }

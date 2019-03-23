@@ -1,3 +1,5 @@
+//FORM.JS
+
 function validateSignIn() {
     document.cookie = "scriptEnabled=true;";
     var form = {
@@ -8,21 +10,20 @@ function validateSignIn() {
     
     if (!checkEmail(form.email, messageElem)) return false;
     if (!checkPassword(form.password, messageElem)) return false;
-    //if (!checkUser(form, messageElem)) return false;
     
     return true;
 }
 
 function checkEmail(email, messageElem) {
-
-    if (!/@.+\./.test(email)) {
+    var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+    if(!email.match(reEmail)) {        
         messageElem.textContent = "Invalid email";
         return false;
     }
     return true;
 }
 
-function checkPassword(password) {
+function checkPassword(password, messageElem) {
     if (password.length < 8) {
         messageElem.textContent = "Password needs to be at least 8 characters";
         return false;
@@ -49,23 +50,7 @@ function checkUser(form, messageElem) {
 
 }
 
-// function addTestUser() {
-//     //localStorage.setItem('last', null)
-//     /*localStorage.setItem("j@gmail.com", JSON.stringify({
-//         id: "u2",
-//         password: "john1234"
-//     }));*/
-//     //var id = localStorage.getItem('last') == 'null' ? `u${localStorage.length}` : localStorage.getItem('last');
-//     var user = new User({
-//         "id": id,
-//         "fname": "John",
-//         "lname": "Heizenburg",
-//         "role": "Administrator",
-//     })
-//     localStorage.setItem("user", JSON.stringify(user));
-// }
-
 sessionStorage.clear();
 localStorage.clear();
-//addTestUser();
+
 document.getElementById("mainForm").onsubmit = validateSignIn;

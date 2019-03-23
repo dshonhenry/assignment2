@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    $_SESSION = array();
-    session_destroy();
-    require("validate.php");
+    if(isset($_SESSION['user'])) {
+        header('location: console.php');
+    }
+    require_once("validate.php");
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,6 @@
                 <button type="submit" name='submitU'>Sign In</button>
             </form>
             
-            <!-- <button onclick="submit()"> Sign In</button> -->
             <p><a href="#">Forgot Password</a></p>
         </div>
     </body>

@@ -78,12 +78,12 @@ h1 > a, h1 > a:visited {
 }
 
 #dropdownContent {
-    opacity: 0;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     right: 0;
     max-width: 100px;
+    min-height: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 5px 50px 12px 10px;
     z-index: 1;
@@ -91,6 +91,7 @@ h1 > a, h1 > a:visited {
 }
 
 #dropdownContent a {
+    display: block;
     margin: 10px 0px;
     color: var(--primary);
 }

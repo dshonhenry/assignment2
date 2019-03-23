@@ -1,3 +1,5 @@
+//NEW.JS
+
 function validateStudent(form) {
     var valid = true;
     if (!validId(form.id))
