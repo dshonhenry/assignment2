@@ -1,6 +1,7 @@
 <!--VIEWSTUDENT.PHP-->
 
 <?php
+    require_once('CSVManagement.php');
     function getStudents($year){
         $file = file("./CSV/students.csv");
         $students = [];
@@ -31,8 +32,8 @@
            foreach($students as $student) {
                 $htmlString = 
                 $htmlString.'<tr>
-                                <td><a href="manageStudents.php?id='.$student->studentId.'&action=delete">Delete</a></td>
-                                <td><a href="manageStudents.php?id='.$student->studentId.'&action=edit">Edit</a></td>
+                                <td><a href="Scripts/manageStudents.php?id='.$student->studentId.'&action=del">Delete</a></td>
+                                <td><a href="Scripts/manageStudents.php?id='.$student->studentId.'&action=edit">Edit</a></td>
                                 <td>'.$student->studentId.'</td>                
                                 <td>'.$student->fname.'</td>
                                 <td>'.$student->lname.'</td>
@@ -47,19 +48,12 @@
     } 
 
     function getStudentById($id) {
-        $file = file("./CSV/students.csv");
-        $student;
-
-        foreach ($file as $line) {
-            if(str_getcsv($line)[0] == $id) {
-                $student = readStudent($line);                
-                return $student;
-            }
-        }
-        return null;
+        return readStudent(CSV_Manager::getRecordById("./CSV/students.csv",$id, 0));
     }
 
     function readStudent($line){
+        if($line == null)
+            return $line;
         $student['studentId'] = str_getcsv($line)[0];            
         $student['fname'] = str_getcsv($line)[1];                     
         $student['lname'] = str_getcsv($line)[2];         

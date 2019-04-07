@@ -1,8 +1,9 @@
 <!--STUDENTS.PHP-->
 
 <?php
-    require_once("login.php");    
-    require_once("viewStudents.php");
+    require_once("./Scripts/login.php");    
+    require_once("./Scripts/viewStudents.php");
+    require_once("./Scripts/nav.php");
 
     if (!isUserLoggedIn()) {
         header('Location: index.php');
@@ -38,25 +39,7 @@
 </head>
 
 <body>
-    <div class="nav">
-        <div class="heading">
-            <h1><a href = "console.php">Program: Msc. Information Technology</a></h1>
-            <inline id="name" class="subtle"> User: <?php echo(getUserInfo("fname")." ".getUserInfo("lname")) ?> </inline>                
-            <inline id="role" class="subtle"> Role: <?php echo(getUserInfo("role")) ?> </inline>
-        </div>
-        <div class="menu">
-            <div class="hamburger" onclick="ToggleMenu(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
-            </div>
-            <div id="dropdownContent">
-                <a href="#">Account</a>
-                <a href="#">Settings</a>
-                <a href="logout.php">Logout</a>
-            </div>
-        </div>
-    </div>
+    <?php echo viewNavBar() ?>
 
     <div id="content">
         <h1>Students</h1>

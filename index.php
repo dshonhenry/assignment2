@@ -2,7 +2,7 @@
     if(isset($_SESSION['user'])) {
         header('location: console.php');
     }
-    require_once("validate.php");
+    require_once("./Scripts/validate.php");
 ?>
 
 <!DOCTYPE html>

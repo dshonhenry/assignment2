@@ -13,15 +13,11 @@ class CSV_Manager {
         $records = [];
 
         foreach ($file as $line) {
-            if($id== str_getcsv($line)[$idIndex]) 
+            if($id == str_getcsv($line)[$idIndex]) 
                 continue;
-            for($i =0; $i<6; $i++) {
-                $record[$i] = str_getcsv($line)[$i];     
-            }   
-            $records[] = $record;
+            $records[] = str_getcsv($line);
         }
         fclose($file);
-
         $file = fopen($filePath, "w");
         foreach($records as $record)
             fputcsv($file, $record);
@@ -44,6 +40,18 @@ class CSV_Manager {
         foreach($records as $rec)
             fputcsv($file, $rec);
         fclose($file);
+    }
+
+    public static function getRecordById($filePath, $id, $idIndex)
+    {
+        $file = file($filePath);
+
+        foreach ($file as $line) {
+            if($id== str_getcsv($line)[$idIndex]) 
+                return $line;
+        }
+        fclose($file);
+        return null;
     }
 }
 ?>

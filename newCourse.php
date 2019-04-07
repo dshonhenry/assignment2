@@ -1,7 +1,8 @@
 <!--NEWCOURSE.PHP-->
 
 <?php
-  require_once("login.php");
+  require_once("./Scripts/login.php");
+  require_once("./Scripts/nav.php");
 
   if (!isUserLoggedIn()) {
     header('Location: index.php');
@@ -27,7 +28,12 @@
 
     return null;  
   }
-    $butString = ($operation == "add" ? "Add" : "Update");
+  $butString = "Add";
+
+  if(isset($_GET['action'])){
+      $operation = $_GET['action'];
+      $butString = ($operation == "edit" ? "Update" : "Confirm");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -43,28 +49,11 @@
 </head>
 
 <body>
-  <div class="nav">
-    <div class="heading">
-      <h1><a href = "console.php">Program: Msc. Information Technology</a></h1>
-      <span id="name" class="subtle"> User: <?php echo(getUserInfo("fname")." ".getUserInfo("lname")) ?> </span>                
-      <span id="role" class="subtle"> Role: <?php echo(getUserInfo("role")) ?> </span>
-    </div>
-    <div class="menu">
-      <div class="hamburger" onclick="ToggleMenu(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div>
-      <div id="dropdownContent">
-        <a href="#">Account</a>
-        <a href="#">Settings</a>
-        <a href="index.php">Logout</a>
-      </div>
-    </div>
-  </div>
+
+  <?php echo viewNavBar(); ?>
 
   <div id="content" class = "big-row">
-    <form id="form" class = "col-1" name="newStudentInput" action="manageCourses.php?action=<?php echo($operation)?>" method="POST">
+    <form id="form" class = "col-1" name="newStudentInput" action="Scripts/manageCourses.php?action=<?php echo($operation)?>" method="POST">
       <div class="row">
         <div class="col-1">
           <label for="id">Course ID:</label>
@@ -79,9 +68,10 @@
           <label for="title">Course Title:</label>
         </div>
         <div class="col-2"> 
-          <input name="title" type="text" value="<?php if(isset($formInfo)) echo($formInfo['title']) ?>">
+          <input name="title" type="text" value="<?php if(isset($formInfo)) echo($formInfo['title']) ?>" <?php if(isset($_GET['id']) && $_GET['action']=="del") echo('readonly="readonly"')?>>
         </div>
       </div>
+      <p id="delString"><?php if(isset($_GET['id']) && $_GET['action']=="del") echo "Please confirm that you want to delete this record" ?></p>
       <div class="row btn-row">
         <div class="col-1">
           <button type="submit" name="submit"><?php echo($butString);?></button>

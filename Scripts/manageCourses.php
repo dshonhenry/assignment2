@@ -7,6 +7,11 @@
         removeCourse($_GET['id']);
     }
 
+    if(isset($_POST['cancel'])) {
+        header('Location: ../courses.php');
+        exit();
+    }
+
     if(isset($_POST['submit']) && $_GET['action']=="add") {
         unset($_POST['submit']);  
         addCourse($_POST);
@@ -15,6 +20,11 @@
     if (isset($_POST['submit']) && $_GET['action']=="edit") {
         unset($_POST['submit']);  
         updateCourse($_POST);
+    }
+
+    if (isset($_POST['submit']) && $_GET['action']=="del") {
+        unset($_POST['submit']);  
+        removeCourse($_POST);
     }
 
     function viewCourses() {
@@ -36,7 +46,7 @@
            foreach($courses as $course) {
                 $htmlString = 
                 $htmlString.'<tr>
-                                <td><a href="manageCourses.php?id='.$course['id'].'&action=delete">Delete</a></td>
+                                <td><a href="newCourse.php?id='.$course['id'].'&action=del">Delete</a></td>
                                 <td><a href="newCourse.php?id='.$course['id'].'&action=edit">Edit</a></td>
                                 <td>'.$course['id'].'</td>                
                                 <td>'.$course['title'].'</td>
@@ -48,20 +58,23 @@
     }
 
     function addCourse($course) {
-        $courseArray = array($course['id'], $course['title']);
-        CSV_Manager::addRecord("./CSV/courses.csv", $courseArray);
-        header('location: courses.php');
+        if(isset($course['id']) && isset($course['title'])) {
+            $courseArray = array($course['id'], $course['title']);
+            if(CSV_Manager::getRecordById("../CSV/courses.csv", $course['id'], 0) != null )
+                CSV_Manager::addRecord("../CSV/courses.csv", $courseArray);
+        }
+        header('location: ../courses.php');
     }
 
-    function removeCourse($id) {
-        CSV_Manager::removeRecordById("./CSV/courses.csv", $id, 0);
-        header('location: courses.php');
+    function removeCourse($course) {
+        CSV_Manager::removeRecordById("../CSV/courses.csv", $course['id'], 0);
+        header('location: ../courses.php');
     }
 
     function updateCourse($formInfo) {
         $course = array_values($formInfo);
-        CSV_Manager::updateRecord("./CSV/courses.csv", $course, 0);
-        header('Location: courses.php');
+        CSV_Manager::updateRecord("../CSV/courses.csv", $course, 0);
+        header('Location: ../courses.php');
     }
 
     

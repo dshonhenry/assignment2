@@ -1,7 +1,8 @@
 <!--CONSOLE.PHP-->
 
 <?php
-    require_once("login.php");
+    require_once("./Scripts/login.php");
+    require_once("./Scripts/nav.php");
     if (!isUserLoggedIn()) {
         header('Location: index.php');
         exit();
@@ -21,25 +22,8 @@
         <title>PROCOMS</title>
     </head>
     <body>
-        <div class="nav">
-            <div class="heading">
-                <h1>Program: Msc. Information Technology</h1>
-                <inline id="name" class="subtle"> User: <?php echo($user['fname']." ".$user['lname']) ?> </inline>                
-                <inline id="role" class="subtle"> Role: <?php echo($user['role']) ?> </inline>
-            </div>
-            <div class="menu" >
-                <div class="hamburger" onclick="ToggleMenu(this)">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                </div>
-                <div id="dropdownContent">
-                    <a href="#">Account</a>                    
-                    <a href="#">Settings</a>
-                    <a href="logout.php">Logout</a>
-                </div>
-            </div>
-        </div>
+
+        <?php echo viewNavBar(); ?>
 
         <div class=cardStack>
             <div class="card">
